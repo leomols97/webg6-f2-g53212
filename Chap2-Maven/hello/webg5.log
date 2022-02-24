@@ -1,0 +1,5 @@
+2022-02-17 15:03:52,996 ERROR [webg5.App] - world !
+2022-02-17 15:42:14,152 ERROR [webg5.App] - world !
+2022-02-17 15:43:45,855 INFO  [webg5.lombok.LogHello] - Hello, world !
+2022-02-17 15:45:44,377 INFO  [webg5.lombok.LogHello] - Hello, world !
+2022-02-17 15:46:17,516 ERROR [webg5.lombok.LogHello] - Hello, world !
