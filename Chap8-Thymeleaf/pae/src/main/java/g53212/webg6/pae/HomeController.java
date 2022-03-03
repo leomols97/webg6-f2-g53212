@@ -1,4 +1,4 @@
-package webg5.spring.hello;
+package g53212.webg6.pae;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
