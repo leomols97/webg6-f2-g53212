@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Course {
+public class Student {
     @Id
-    private String id;
-    private String title;
-    private int ects;
+    private int id;
+    private String name;
+    private String section;
 }

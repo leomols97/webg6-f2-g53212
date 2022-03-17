@@ -16,22 +16,13 @@
         <h3 id="title_description">HE2B-ESI / WEBG5 / JLC / 2021-2022</h3>
         <img th:src="@{/image/ESI.jpeg}" />
     </header>
+    <main>
+        <nav>
+            <a th:href="@{/home}">Home</a>
+        </nav>
+    </main>
 
     <body>
-        <table>
-            <tr>
-                <th>Sigle</th>
-                <th>Titre</th>
-                <th>ECTS</th>
-            </tr>
-            <tr th:each="course : ${courses}">
-                <td>
-                    <a th:href="@{/course(courseId=${course.getId})}" th:text="${course.getId}"></a>
-                </td>
-                <td th:text="${course.getTitle}"></td>
-                <td th:text="${course.getEcts}"></td>
-            </tr>
-        </table>
     </body>
 
     <footer>53212</footer>

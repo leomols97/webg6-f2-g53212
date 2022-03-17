@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>courses</title>
+        <title>students</title>
         <meta charset="utf-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,16 +20,14 @@
     <body>
         <table>
             <tr>
-                <th>Sigle</th>
-                <th>Titre</th>
+                <th>ID</th>
+                <th>Nom</th>
                 <th>ECTS</th>
             </tr>
-            <tr th:each="course : ${courses}">
-                <td>
-                    <a th:href="@{/course(courseId=${course.getId})}" th:text="${course.getId}"></a>
-                </td>
-                <td th:text="${course.getTitle}"></td>
-                <td th:text="${course.getEcts}"></td>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.getId}">1</td>
+                <td th:text="${student.getName}">1</td>
+                <td th:text="${student.getSection}">1</td>
             </tr>
         </table>
     </body>

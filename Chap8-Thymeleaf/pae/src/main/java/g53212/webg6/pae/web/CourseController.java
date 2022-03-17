@@ -11,7 +11,7 @@ import g53212.webg6.pae.business.*;
 @Controller
 public class CourseController {
 
-    @GetMapping("/")
+    @GetMapping("/home")
     public String showIndex(Model model) {
         ArrayList<String> usernames = new ArrayList<String>();
         String Leo = "Léo";
@@ -30,5 +30,17 @@ public class CourseController {
         ArrayList<Course> courses = pae.createCourses();
         model.addAttribute("courses", courses);
         return "courses";
+    }
+
+    @GetMapping("/course")
+    public String getCourse(Model model) {
+        return "course";
+    }
+
+    @GetMapping("/students")
+    public String showStudents(Model model) {
+        ArrayList<Student> students = pae.createStudents();
+        model.addAttribute("students", students);
+        return "students";
     }
 }

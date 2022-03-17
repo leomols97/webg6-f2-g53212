@@ -1,35 +1,33 @@
 <!DOCTYPE html>
 <html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
 
-<head>
-    <meta charset="utf-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" th:href="@{/css/style.css}"/>
-    <link rel="stylesheet" th:href="@{/image/ESI.jpeg}"/>
-</head>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+        <link rel="stylesheet" th:href="@{/image/ESI.jpeg}" />
+    </head>
 
-<header>
-    <h1 id="title_header">Programme annuel des étudiants</h1>
-    <h3 id="title_description">HE2B-ESI / WEBG5 / JLC / 2021-2022</h3>
-    <img th:src="@{/image/ESI.jpeg}"/>
-</header>
+    <header>
+        <h1 id="title_header">Programme annuel des étudiants</h1>
+        <h3 id="title_description">HE2B-ESI / WEBG5 / JLC / 2021-2022</h3>
+        <img th:src="@{/image/ESI.jpeg}" />
+    </header>
 
-<body>
-Bienvenue <span th:text="${username}">Inconnu</span> ! <br>
-<span th:text="|Bonjour, ${username}|">Inconnu</span> !
-<table>
-    <tr>
-        <th>Numéro</th>
-        <th>Nom</th>
-    </tr>
-    <tr th:each="username,iterStat : ${usernames}">
-        <td th:text="${iterStat.count}">1</td>
-        <td th:text="${username}">nom</td>
-    </tr>
-</table>
-</body>
+    <main>
+        <nav>
+            <a th:href="@{/courses}">Cours</a>
+            <a th:href="@{/students}">Etudiants</a>
+        </nav>
+    </main>
 
-<footer>53212</footer>
+    <body>
+        Bienvenue <span th:text="${username}">Inconnu</span> ! <br>
+        <span th:text="|Bonjour, ${username}|">Inconnu</span> !
+
+    </body>
+
+    <footer>53212</footer>
 
 </html>
