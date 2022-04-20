@@ -11,13 +11,8 @@ public class HomeController {
     @GetMapping("/")
     public String showIndex(Model model) {
         ArrayList<String> usernames = new ArrayList<String>();
-        String Leo = "Léo";
-        String Theo = "Théo";
-        String Geo = "Géo";
-        usernames.add(Leo);
-        usernames.add(Theo);
-        usernames.add(Geo);
         model.addAttribute("usernames", usernames);
+        model.addAttribute("username", "Léopold");
         return "home";
     }
 }

@@ -24,10 +24,13 @@
                 </tr>
             </table>
 
-            <form th:action="@{/courses}" th:object="${course}" method="post">
-                <input type="text" th:field="*{id}" th:errorclass="errorField"/><span th:errors="*{id}" class="errorMsg">error</span><br>
-                <input type="text" th:field="*{title}" th:errorclass="errorField"/><span th:errors="*{title}" class="errorMsg">error</span><br>
-                <input type="number" th:field="*{ects}" th:errorclass="errorField"/><span th:errors="*{ects}" class="errorMsg">error</span><br>
+            <form th:action="@{/courses}" th:object="${course}" method="post" required>
+                <input type="text" th:field="*{id}" th:errorclass="errorField"/>
+                    <span th:errors="*{id}" class="errorMsg">error</span><br>
+                <input type="text" th:field="*{title}" th:errorclass="errorField"/>
+                    <span th:errors="*{title}" class="errorMsg">error</span><br>
+                <input type="number" th:field="*{ects}" th:errorclass="errorField"/>
+                    <span th:errors="*{ects}" class="errorMsg">error</span><br>
                 <button type="submit">Envoyer</button>
             </form>
         </main>

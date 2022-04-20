@@ -9,7 +9,9 @@ import g53212.webg6.pae.model.*;
 
 import javax.persistence.Transient;
 
-@Service @Data public class PAE
+@Service
+@Data
+public class PAE
 {
     @Transient
     private     ArrayList<Course>  courses  = new ArrayList<Course>();

@@ -3,6 +3,7 @@ package g53212.webg6.pae.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Min;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +22,7 @@ public class Course {
     @NotBlank(message = "Le champs pour le titre du cours ne peut pas être vide !")
     private String title;
 
-    @NotBlank(message = "Le champs pour les ECTS du cours ne peut pas être vide !")
+    //@NotBlank(message = "Le champs pour les ECTS du cours ne peut pas être vide !") --> ceci n'est pas reconnu
+    @Min(1)
     private int ects;
 }
