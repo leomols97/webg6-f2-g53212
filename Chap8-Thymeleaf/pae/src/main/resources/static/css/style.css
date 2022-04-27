@@ -37,6 +37,6 @@ footer{
     background-color: skyblue;
     text-align: center;
     bottom: 0;
-    position: absolute;
+    position: fixed;
     width: 100%;
 }

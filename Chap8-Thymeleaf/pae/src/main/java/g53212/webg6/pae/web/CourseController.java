@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.validation.Valid;
 
 import g53212.webg6.pae.model.*;
+import g53212.webg6.pae.rest.*;
 import g53212.webg6.pae.business.*;
 
 @Controller
@@ -19,20 +20,11 @@ public class CourseController {
     @Autowired
     PAE pae;
 
-    @GetMapping("/home")
-    public String showIndex(Model model) {
-        String userLeo = "Léo";
-        UserNames userNames = new UserNames(userLeo);
-        model.addAttribute("usernames", userNames);
-        model.addAttribute("username", userLeo);
-        return "home";
-    }
-
     @GetMapping("/courses")
     public String showCourses(Model model) {
-        // JLC
         model.addAttribute("course", new Course("Nom du cours", "Titre du cours", 0));
         model.addAttribute("courses", this.pae.getCourses());
+        // model.addAttribute("courses", CoursesRest.restGetCourses());
         return "courses";
     }
 

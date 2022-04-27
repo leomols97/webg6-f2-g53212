@@ -3,6 +3,10 @@ package g53212.webg6.pae.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
 import javax.validation.constraints.Min;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +26,12 @@ public class Course {
     @NotBlank(message = "Le champs pour le titre du cours ne peut pas être vide !")
     private String title;
 
-    //@NotBlank(message = "Le champs pour les ECTS du cours ne peut pas être vide !") --> ceci n'est pas reconnu
+    // @NotBlank(message = "Le champs pour les ECTS du cours ne peut pas être vide
+    // !") --> ceci n'est pas reconnu
     @Min(1)
     private int ects;
+
+    // @Query("SELECT course FROM courses c WHERE c.id=:searchID")
+    // public static Course getCourse(@Param("searchID") String id) {
+    // }
 }
