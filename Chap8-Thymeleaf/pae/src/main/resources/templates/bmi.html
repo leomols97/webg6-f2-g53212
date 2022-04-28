@@ -3,18 +3,25 @@
 
     <head>
         <title>BMI</title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
                 $("#compute").click(
                     function() {
-                        let poids = $("#poids").val();
-                        let taille = $("#taille").val();
-                        let genre = $("input[name=genre]:checked").val();
-                        let url = "http://localhost:8080/api/bmi?" +
-                            "weight=" + poids +
-                            "&height=" + taille + "&gender=" + genre;
-                        $("#bmi").load(url);
-                    })
+                        var poids = $("#poids").val();
+                        var taille = $("#taille").val();
+                        var genre = $("input[name=genre]:checked").val();
+                        $.ajax({
+                            url: "http://localhost:8080/api/bmi?" + "weight=" + poids +
+                                "&height=" + taille +
+                                "&gender=" + genre
+                        }).then(function(data) {
+                            var bmi = data.bmi;
+                            var corpulence = data.corpulence;
+                            $("#imc").text(bmi);
+                            $("#corpulence").text(corpulence);
+                        });
+                    });
             });
         </script>
     </head>
@@ -28,13 +35,7 @@
             <br/> Votre taille (en cm) : <input id="taille" value="177" size="10" />
             <br/> Votre poids (en kg) : <input id="poids" value="69" size="10" />
             <br/> <button id="compute">Calculer</button><br/>
-            <br/>
-            <div id="bmi">
-            </div>
-            <div th:fragment="content">
-                Votre IMC = <span th:text="${bmi}">???</span>
-                <br/> Votre corpulence = <span th:text="${corpulence}">???</span>
-            </div>
+            <br/> Votre IMC = <span id="imc"></span><br/> Votre corpulence = <span id="corpulence"></span>
         </main>
     </body>
 
