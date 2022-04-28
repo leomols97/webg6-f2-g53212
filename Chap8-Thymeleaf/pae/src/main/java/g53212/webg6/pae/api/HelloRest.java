@@ -29,6 +29,8 @@ public class HelloRest {
     @GetMapping("/hello3")
     public ResponseEntity<String> hello3(@RequestParam String name) {
         if ("mcd".equals(name)) {
+            // Attention : le statut d'erreur n'est pas affiché sur Safari. Il n'y a qu'une
+            // page blanche
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         } else {
             return new ResponseEntity<>("Hello, " + name + " !", HttpStatus.OK);

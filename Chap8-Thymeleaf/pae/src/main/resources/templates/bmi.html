@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+
+    <head>
+        <title>BMI</title>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#compute").click(
+                    function() {
+                        let poids = $("#poids").val();
+                        let taille = $("#taille").val();
+                        let genre = $("input[name=genre]:checked").val();
+                        let url = "http://localhost:8080/api/bmi?" +
+                            "weight=" + poids +
+                            "&height=" + taille + "&gender=" + genre;
+                        $("#bmi").load(url);
+                    })
+            });
+        </script>
+    </head>
+
+    <body>
+        <main layout:fragment="content">
+            <h1>Calcul IMC</h1>
+            <p>Entrez vos informations</p>
+            <input type="radio" name="genre" value="man" checked> Homme
+            <input type="radio" name="genre" value="woman"> Femme
+            <br/> Votre taille (en cm) : <input id="taille" value="177" size="10" />
+            <br/> Votre poids (en kg) : <input id="poids" value="69" size="10" />
+            <br/> <button id="compute">Calculer</button><br/>
+            <br/>
+            <div id="bmi">
+            </div>
+            <div th:fragment="content">
+                Votre IMC = <span th:text="${bmi}">???</span>
+                <br/> Votre corpulence = <span th:text="${corpulence}">???</span>
+            </div>
+        </main>
+    </body>
+
+</html>

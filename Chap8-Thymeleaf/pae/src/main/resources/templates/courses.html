@@ -3,6 +3,15 @@
 
     <head>
         <title>Cours</title>
+        <script>
+            function httpGet() {
+                var xmlHttp = new XMLHttpRequest();
+                xmlHttp.open("GET", "http://localhost:8080/rest/courses", false);
+                xmlHttp.send(null);
+                return xmlHttp.responseText;
+            }
+            document.getElementById("coursesRest").innerHTML = (httpGet());
+        </script>
     </head>
 
     <body>
@@ -32,6 +41,10 @@
 
                 <button type="submit">Envoyer</button>
             </form>
+
+            <p id="coursesRest">
+            </p>
+
         </main>
     </body>
 
