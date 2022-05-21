@@ -20,33 +20,37 @@ public class CourseController {
     @Autowired
     PAE pae;
 
+    @Autowired
+    private CourseDB courseDB;
+
     @GetMapping("/courses")
     public String showCourses(Model model) {
         model.addAttribute("course", new Course("Nom du cours", "Titre du cours", 0));
-        model.addAttribute("courses", this.pae.getCourses());
+        model.addAttribute("courses", courseDB.findAll());
         // model.addAttribute("courses", CoursesRest.restGetCourses());
         return "courses";
     }
 
-    @PostMapping("/courses")
-    public String addCourse(@Valid Course course, Errors errors, Model model) {
-        if (errors.hasErrors()) {
-            model.addAttribute("courses", pae.getCourses());
-            return "courses";
-        }
-        this.pae.getCourses().add(course);
-        return "redirect:courses";
-    }
+    // @PostMapping("/courses")
+    // public String addCourse(@Valid CourseDB courseDB, Errors errors, Model model)
+    // {
+    // if (errors.hasErrors()) {
+    // model.addAttribute("courses", courseDB.findAll());
+    // return "courses";
+    // }
+    // this.pae.getCourses().add(course);
+    // return "redirect:courses";
+    // }
 
     @GetMapping("/course")
     public String getCourse(Model model) {
         return "course";
     }
 
-    @GetMapping("/students")
-    public String showStudents(Model model) {
-        ArrayList<Student> students = pae.getStudents();
-        model.addAttribute("students", students);
-        return "students";
-    }
+    // @GetMapping("/students")
+    // public String showStudents(Model model) {
+    // ArrayList<Student> students = pae.getStudents();
+    // model.addAttribute("students", students);
+    // return "students";
+    // }
 }

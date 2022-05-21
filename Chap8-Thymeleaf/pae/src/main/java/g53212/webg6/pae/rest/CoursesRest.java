@@ -20,10 +20,10 @@ public class CoursesRest {
     @Autowired
     PAE pae;
 
-    @GetMapping("/courses")
-    public ArrayList<Course> restGetCourses() {
-        return this.pae.getCourses();
-    }
+    // @GetMapping("/courses")
+    // public ArrayList<Course> restGetCourses() {
+    // return this.pae.getCourses();
+    // }
 
     // @GetMapping("/course/{name}")
     // public Course course(@RequestParam(defaultValue = "Cours inconnu") String id)

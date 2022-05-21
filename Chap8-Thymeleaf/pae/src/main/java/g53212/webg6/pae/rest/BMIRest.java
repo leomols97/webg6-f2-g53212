@@ -10,6 +10,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import g53212.webg6.pae.business.BMIService;
 import g53212.webg6.pae.model.BMIResponse;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -37,15 +40,24 @@ import lombok.extern.slf4j.Slf4j;
 // }
 // }
 @RestController
-@RequestMapping("/api/bmi2")
+@RequestMapping("/api/bmi")
 public class BMIRest {
     @Autowired
     private BMIService bmiService;
 
     @GetMapping
-    public BMIResponse bmi(@RequestParam int height, @RequestParam int weight, @RequestParam String gender) {
+    public BMIResponse bmi(@RequestParam int height, @RequestParam int weight,
+            @RequestParam String gender) {
         double bmi = bmiService.computeBMI(height, weight);
         String corpulence = bmiService.computeCategory(bmi, gender);
         return new BMIResponse(bmi, corpulence);
+    }
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public class BMIResponse {
+        private double bmi;
+        private String corpulence;
     }
 }

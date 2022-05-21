@@ -1,0 +1,34 @@
+<!doctype html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <head>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
+
+    </head>
+
+    <body>
+        <h1>Calcul IMC</h1>
+        <p>Entrez votre poids et votre taille.</p>
+        <div id="requestData">
+            <input type="radio" id="genreM" v-model="genre" value="man" checked> <label for="genreM">Homme</label>
+            <br>
+            <input type="radio" id="genreW" v-model="genre" value="woman"> <label for="genreW">Femme</label>
+            <br> Votre taille (en cm) :
+            <input type="number" v-model="taille" value="188" />
+            <br> Votre poids (en kg) :
+            <input type="number" v-model="poids" value="93" /> <br>
+            <button id="compute" v-on:click="computeBMI">Calculer</button>
+            <br>
+        </div>
+        <div id="responseData" v-if="imc > 0"> Votre IMC = {{ imc }}
+            <br> Votre corpulence = {{ corpulence }}
+        </div>
+        <script src="bmi.js"></script>
+
+    </body>
+
+</html>
