@@ -27,7 +27,7 @@ public class Course {
     private String title;
 
     // @NotBlank(message = "Le champs pour les ECTS du cours ne peut pas être vide
-    // !") --> ceci n'est pas reconnu
+    // e!") --> ceci n'est pas reconnu
     @Min(1)
     private int ects;
 

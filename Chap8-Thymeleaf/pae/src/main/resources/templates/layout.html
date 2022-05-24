@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
     <head>
         <title>Layout</title>
@@ -17,14 +18,13 @@
     </header>
 
     <body>
-        <div>
-            <nav>
-                <a th:href="@{/home}">Home</a>
-                <a th:href="@{/courses}">Cours</a>
-                <a th:href="@{/students}">Etudiants</a>
-                <a th:href="@{/bmi}">Calcul du BMI</a>
-            </nav>
-        </div>
+    <div>
+        <nav>
+            <a th:href="@{/home}">Home</a>
+            <a th:href="@{/courses}">Cours</a>
+            <a th:href="@{/students}">Etudiants</a>
+        </nav>
+    </div>
         <main layout:fragment="content">
 
         </main>

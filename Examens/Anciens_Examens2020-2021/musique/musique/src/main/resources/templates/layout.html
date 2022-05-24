@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" th:href="@{/css/style.css}"/>
+        <title>Musique</title>
+    </head>
+    <body>
+        <header>
+            <img th:src="@{images\HE2B-Logo-ESI.png}"/><span>Musique</span><div></div>  
+        </header>
+        <nav>
+            <a th:href="@{/}">Home</a>  
+            <a th:href="@{/artists}">Artistes</a>
+        </nav>
+        <main layout:fragment="content">
+
+        </main>
+        <footer>
+            HE2B-ESI/WEBG6/JLC/Examen de premiere session
+        </footer>
+    </body>
+    
+
+    
+</html>

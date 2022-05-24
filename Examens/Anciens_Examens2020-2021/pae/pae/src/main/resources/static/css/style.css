@@ -1,0 +1,76 @@
+header {
+    background-color: lightgreen;
+    text-align: center;
+    display: grid;
+    grid-template-areas: 'top right' 'bottom right';
+    justify-content: space-around;
+}
+
+header h1 {
+    font-size: 3em;
+    grid-area: top;
+}
+
+header h2 {
+    font-size: 2em;
+    grid-area: bottom;
+}
+
+.logout {
+    float: right;
+}
+
+header img {
+    background-color: white;
+    width: 188px;
+    height: 150px;
+    grid-area: right;
+    align-self: center;
+}
+
+nav {
+    background-color: greenyellow;
+    text-align: center;
+}
+
+nav a {
+    font-size: 1.5em;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-style: double;
+    /* margin: 10px; */
+    border-color: yellow;
+}
+
+main {
+    /* font-size: 1.5em; */
+}
+
+table {
+    /* border-style: solid; */
+}
+
+th,
+td,
+tr {
+    border-style: ridge;
+    /* border-color: orange; */
+}
+
+footer {
+    background-color: lightgreen;
+    text-align: center;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+}
+
+.errorMsg {
+    color: red;
+    font-weight: bold;
+}
+
+.errorField {
+    border-radius: 5px;
+    border-color: red;
+}

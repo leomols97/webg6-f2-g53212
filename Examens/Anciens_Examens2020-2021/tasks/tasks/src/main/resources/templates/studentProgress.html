@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+    <main layout:fragment="content">
+        <table>
+            <tr><th>Tâche</th><th>Fait ?</th></tr>
+            <tr th:each="exercice : ${exercices}">
+                <td th:text="${exercice.description}"></td>
+                <td>
+                    <input th:if="${student.getTasks().contains(exercice)}" type="checkbox" checked="true"/>
+                    <input th:unless="${student.getTasks().contains(exercice)}" type="checkbox"/>
+                </td>
+                <td th:unless="${student.getTasks().contains(exercice)}">
+                    <form th:action="@{/studentCompletedTask/{taskId}/{studentId}(taskId = ${exercice.id}, studentId = ${student.number})}" method="post">
+                        <button type="submit">Done</button>
+                    </form>
+                </td>
+                
+            </tr>
+        </table>
+    </main>
+</html>

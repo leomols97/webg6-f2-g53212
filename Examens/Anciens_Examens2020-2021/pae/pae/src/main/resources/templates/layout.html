@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <head th:fragment="head">
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+        <meta charset="UTF-8" />
+        <title>PAE</title>
+    </head>
+
+    <body>
+        <header class="grid-container-header">
+            <h1>Programme annuel des étudiants</h1>
+            <img th:src="@{/images/HE2B-Logo-ESI.png}" />
+            <h2>HE2B-ESI / WEBG5 / MCD / 2021-2022</h2>
+        </header>
+        <nav>
+            <span sec:authorize="isAuthenticated()">
+                <span class="logout" sec:authentication="name"></span>
+            <form class="logout" method="post" th:action="@{/logout}">
+                <button type="submit">Logout</button>
+            </form>
+            </span>
+            <a th:href="@{/login}" sec:authorize="!isAuthenticated()">Login</a>
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/courses}">Courses</a>
+            <a th:href="@{/students}">Etudiants</a>
+        </nav>
+        <main layout:fragment="content">
+        </main>
+        <footer>
+            Léopold Mols - 53212
+        </footer>
+    </body>
+
+</html>

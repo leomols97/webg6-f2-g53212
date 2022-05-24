@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+      <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" th:href="@{/css/style.css}"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="text/javascript" th:inline="javascript">
+            $(document).ready(function(){
+                
+                var url = $(location).attr('href')
+                /*<![CDATA[*/
+                var repositoryId =  /*[[${repositoryId}]]*/ '1';
+                /*]]>*/
+                $.ajax({
+                   
+                    url: "http://localhost:8080/api/repository/"+repositoryId
+                   
+                }).then(function (data){
+                    var repositoryId = data.id;
+                    var repositoryName = data.name;
+                    var repositoryOwner = data.username;
+                    
+                    $("#repositoryId").text(repositoryId+" ");
+                    $("#repositoryName").text(repositoryName+" ");
+                    $("#repositoryOwner").text(repositoryOwner+" ");
+                    $("#repositoryCommits").html(data.commits);
+                    
+                });   
+            });
+        </script>
+    </head>
+    <main layout:fragment="content">
+        <h1>Détail du dépôt</h1>
+        <table>
+            <tr><th>Repository Id</th><th>Repository Name</th><th>Repository Owner</th><th>Commits</th></tr>
+            <tr><td id="repositoryId"></td><td id="repositoryName"></td><td id="repositoryOwner"></td><td id="repositoryCommits"></td></tr>
+        </table>
+        <h2>Ajouter un Commit: </h2>
+        <form th:action="@{/addCommitToRepository/{repositoryId}(repositoryId = ${repositoryId})}" th:object="${commit}" method="post">
+            <label for="message">Message du Commit : </label><input id="message" type="text" th:field="*{message}"/><br/>
+            <button type="submit">Ajouter Commit</button>
+        </form>
+    </main>
+</html>

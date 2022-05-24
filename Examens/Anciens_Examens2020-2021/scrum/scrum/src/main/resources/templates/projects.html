@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+    <main layout:fragment="content">
+        <h1>Projects</h1>
+        <table>
+            <tr><th>Nom</th><th>Nombre de sprint</th><th>Etat</th></tr>
+            <tr th:each="projectDto : ${projectDtos}">
+                <td><a th:text="${projectDto.name}" th:href="@{/projectDetails(projectName= ${projectDto.name})}"></a></td>
+                <td th:text="${projectDto.amountOfSprint}"></td>
+                <td th:if="${projectDto.isActive}">En cours</td>
+                <td th:unless="${projectDto.isActive}">Terminé</td>
+            </tr>
+        </table>
+    </main>
+</html>

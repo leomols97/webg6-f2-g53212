@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+    <main layout:fragment="content">
+        <h1>Question: <span th:text="${question.text}"></span></h1>
+        <div th:if="${#lists.isEmpty(questionDetailsDtos)}">Aucune réponses soumises</div>
+
+        <table th:unless="${#lists.isEmpty(questionDetailsDtos)}">
+            <tr><th>Dates de publication</th><th>Réponses</th></tr>
+            <tr th:each="questionDetailsDto : ${questionDetailsDtos}">
+                <td th:text="${questionDetailsDto.date}"></td>
+                <td th:text="${questionDetailsDto.agreed}"></td>
+            </tr>
+        </table>
+
+        <h1>Ajouter une réponse</h1>
+        <form th:action="@{/addAnswerToQuestion/{questionId}(questionId= ${question.number})}" method="post" th:object="${answer}">
+            <label for="agree">Vrai ou Faux ? : </label>
+            <select th:field="*{agree}" id="agree">
+                <option th:value="true">Vrai</option>
+                <option th:value="false">Faux</option>
+            </select>
+            <button type="submit">Soumettre Réponse</button>
+        </form>
+    </main>
+</html>

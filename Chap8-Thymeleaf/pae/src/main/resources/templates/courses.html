@@ -1,17 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 
     <head>
         <title>Cours</title>
-        <script>
-            function httpGet() {
-                var xmlHttp = new XMLHttpRequest();
-                xmlHttp.open("GET", "http://localhost:8080/rest/courses", false);
-                xmlHttp.send(null);
-                return xmlHttp.responseText;
-            }
-            document.getElementById("coursesRest").innerHTML = (httpGet());
-        </script>
     </head>
 
     <body>
@@ -31,20 +24,12 @@
                 </tr>
             </table>
 
-            <form th:action="@{/courses}" th:object="${course}" method="post" required>
-                <input type="text" th:field="*{id}" th:errorclass="errorField" />
-                <span th:errors="*{id}" class="errorMsg">error</span><br>
-                <input type="text" th:field="*{title}" th:errorclass="errorField" />
-                <span th:errors="*{title}" class="errorMsg">error</span><br>
-                <input type="number" th:field="*{ects}" th:errorclass="errorField" />
-                <span th:errors="*{ects}" class="errorMsg">error</span><br>
-
+            <form th:action="@{/courses}" th:object="${course}" method="post">
+                <input type="text" th:field="*{id}" th:errorclass="errorField"/><span th:errors="*{id}" class="errorMsg">error</span><br>
+                <input type="text" th:field="*{title}" th:errorclass="errorField"/><span th:errors="*{title}" class="errorMsg">error</span><br>
+                <input type="number" th:field="*{ects}" th:errorclass="errorField"/><span th:errors="*{ects}" class="errorMsg">error</span><br>
                 <button type="submit">Envoyer</button>
             </form>
-
-            <p id="coursesRest">
-            </p>
-
         </main>
     </body>
 

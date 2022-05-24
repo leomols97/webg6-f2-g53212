@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+
+    <head>
+        <meta charset="UTF-8" />
+    </head>
+    <main layout:fragment="content">
+        <h1 th:text="${course.label}">Nom du Cours</h1>
+        <h3>Etudiants inscrit au cours</h3>
+        <h2 th:if="${#lists.isEmpty(course.students)}">Aucun étudiant n'est inscrit à ce cours</h2>
+        <table th:unless="${#lists.isEmpty(course.students)}">
+            <tr>
+                <th>matricule</th>
+                <th>nom</th>
+            </tr>
+            <tr th:each="student : ${course.students}">
+                <td><a th:href="@{/student(matricule=${student.matricule})}" th:text="${student.matricule}">matricule</a></td>
+                <td><a th:href="@{/student(matricule=${student.matricule})}" th:text="${student.name}">nom</a></td>
+            </tr>
+        </table>
+        <br/>
+
+        <h3>Inscrire un étudiant au cours</h3>
+        <form th:action="@{/registerStudentToCourse/{cId}(cId=${course.id})}" th:object="${student}" method="post">
+            <label for="registerInput">Matricule de l'étudiant à ajouter : </label><input id="registerInput" type="text" th:field="*{matricule}" />
+            <button type="submit">Ajouter</button>
+        </form><br/>
+    </main>
+
+</html>

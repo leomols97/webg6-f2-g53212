@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+</head>
+
+<div class="container" layout:fragment="content">
+    <h1>Bienvenue dans le site de gestion du programme annuel des étudiants.</h1>
+
+    <div id="requestData">
+        <select v-model="selected" v-on:click="clickCourse">
+            <option value="INT1 - Introductions">INT1 - Introductions</option>
+            <option value="MAT1 - Mathématiques 2">MAT1 - Mathématiques 2</option>
+            <option value="CAI1 - Anglais 1">CAI1 - Anglais 1</option>
+        </select>
+    </div>
+
+    <div id="responseData" v-if="credits > 0">
+        Sigle : {{id}} <br>
+        Intitulé : {{title}} <br>
+        Nb crédits : {{credits}} <br>
+    </div>
+    <script src="monoPage.js"></script>
+</div>
+
+</html>

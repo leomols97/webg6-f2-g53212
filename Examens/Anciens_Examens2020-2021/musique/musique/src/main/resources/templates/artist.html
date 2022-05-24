@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+    <main layout:fragment="content">
+        <h1 th:text="${artist.name}">Nom de l'artiste</h1>
+        <span th:switch="${artist.name}">
+            <img th:case="'Bruno Mars'"  th:src="@{images\mars.jpg}"/>
+            <img th:case="'Gayle'" th:src="@{images\gayle.jpg}"/>
+            <img th:case="'Adele'" th:src="@{images\adele.jpg}"/>
+            <img th:case="'Ed Sheeran'" th:src="@{images\sheeran.jpg}"/>
+        </span>
+        
+        
+        <p th:if="${#lists.isEmpty(artist.tracks)}">Aucune chanson disponible</p>
+        <table th:unless="${#lists.isEmpty(artist.tracks)}">
+            <tr><th>Titre</th><th>Nombre d'écoutes</th><th>Mise à jour</th></tr>
+            <tr th:each="track : ${artist.tracks}">
+                <td th:text="${track.title}">titre</td>
+                <td th:text="${track.stream}">nb d'écoutes</td>
+                <td>
+                    <form th:action="@{/updateTrack/{artistId}/{trackId}(artistId=${artist.login}, trackId = ${track.id})}" th:object="${track}" method="post">
+                        <input type="number" th:field="*{stream}"/>
+                        <button type="submit">Envoyer</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </main>
+</html>

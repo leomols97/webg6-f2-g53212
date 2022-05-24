@@ -1,0 +1,47 @@
+<!-- <!DOCTYPE html>
+<html>
+    <head th:replace="~{fragments/main.html::head}"></head>
+    <body>
+        <header th:replace="~{fragments/main.html::header}"></header>
+        <nav>
+            <a th:href="@{/}">Home</a>
+        </nav>
+        <footer th:replace="~{fragments/main.html::footer}"></footer>
+    </body>
+</html> -->
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+    <main layout:fragment="content">
+        <form th:action="@{/studentsFilteredByName}" th:object="${studentFilter}" method="post">
+            <label for="filterField">Recherche par le nom : </label><input id="filterField" type="text" th:field=*{name}/>
+            <button type="submit">Filtrer</button>
+        </form><br/>
+        <span th:if="${#lists.isEmpty(students)}">Aucun étudiant</span>
+        <table th:unless="${#lists.isEmpty(students)}">
+            <tr>
+                <th>Matricule</th>
+                <th>Nom</th>
+                <th>Genre</th>
+                <th>Section</th>
+            </tr>
+            <tr th:each="student : ${students}">
+                <td><a th:href="@{/student(matricule=${student.matricule})}" th:text="${student.matricule}">matricule</a></td>
+                <td><a th:href="@{/student(matricule=${student.matricule})}" th:text="${student.name}">nom</a></td>
+                <td th:href="${student.genre}" th:text="${student.genre}">genre</td>
+                <td th:href="${student.section}" th:text="${student.section}">section</td>
+            </tr>
+        </table>
+        <br/>
+        <h2>Ajouter un Etudiant</h2>
+        <form th:action="@{/students}" th:objet="${student}" method="post">
+            Nom: <input type="text" th:field="*{student.name}" placeholder="Nom de l'étudiant" /><br/> Genre: <br/><input id="rb1" name="genre" type="radio" th:value="${T(g52006.webg6.pae.model.Genre).M}" th:field="*{student.genre}" checked="true" />
+            <label for="rb1">Homme</label><br/>
+            <input id="rb2" type="radio" name="genre" th:value="${T(g52006.webg6.pae.model.Genre).F}" th:field="*{student.genre}" /><label for="rb2">Femme</label> <br/> Section:
+            <br/> <input id="rb3" name="section" type="radio" th:value="${T(g52006.webg6.pae.model.Section).GESTION}" th:field="*{student.section}" /><label for="rb3">Gestion</label> <br/>
+            <input id="rb4" name="section" type="radio" th:value="${T(g52006.webg6.pae.model.Section).INDUSTRIELLE}" th:field="*{student.section}" /><label for="rb4">Industrielle</label><br/>
+            <input id="rb5" name="section" type="radio" th:value="${T(g52006.webg6.pae.model.Section).RESEAU}" th:field="*{student.section}" /><label for="rb5">Réseau</label><br/>
+            <button type="submit">Ajouter</button>
+        </form> <br/>
+    </main>
+
+</html>

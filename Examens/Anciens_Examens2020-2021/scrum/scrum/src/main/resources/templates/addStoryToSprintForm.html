@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+    <main layout:fragment="content">
+        <h1>Ajouter une Story au dernier sprint</h1>
+        <form method="post" th:action="@{/addStoryToSprint/{projectName}(projectName = ${projectName})}" th:object="${story}">
+            <label for="titre">Titre de la UserStory: </label><input id="titre" type="text" th:field="*{title}" /><br/>
+            <label for="estimate">Nombre de points estimés: </label><input id="estimate" type="number" th:field="*{estimate}"/><br/>
+            <button type="submit">Soumettre Story</button>
+        </form>
+    </main>
+</html>

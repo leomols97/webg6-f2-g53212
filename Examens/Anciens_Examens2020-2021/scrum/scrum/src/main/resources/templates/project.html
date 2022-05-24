@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+    <main layout:fragment="content">
+        <h1>Project : <span th:text="${projectName}"></span></h1>
+        <h2 th:if="${#lists.isEmpty(storyDtos)}">Aucune Stories pour ce projet</h2>
+        <table th:unless="${#lists.isEmpty(storyDtos)}">
+            <tr><th>Titre de l'histoire</th><th>Numéro du sprint</th><th>Nombre de points estimé</th></tr>
+            <tr th:each="storyDto : ${storyDtos}">
+                <td th:text="${storyDto.storyName}"></td>
+                <td th:text="${storyDto.sprintNumber}"></td>
+                <td th:text="${storyDto.estimatedPoints}"></td>
+            </tr>
+        </table>
+        <form th:action="@{/addStoryToSprint/{projectName}(projectName = ${projectName})}" method="get">
+            <button type="submit">Ajouter une Story</button>
+        </form>
+        <br/>
+    </main>
+</html>

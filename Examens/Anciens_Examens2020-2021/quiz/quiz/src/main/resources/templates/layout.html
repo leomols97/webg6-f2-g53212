@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" th:href="@{/css/style.css}"/>
+        <title>Quiz</title>
+    </head>
+    <body>
+        <header>
+            <img th:src="@{\images\HE2B-Logo-ESI.png}"/><span>Quiz</span><div></div>  
+        </header>
+        <nav>
+            <!--<span sec:authentication="username" sec:authorize="isAuthenticated()"></span>
+
+            <form sec:authorize="!isAuthenticated()" method="post" th:action="@{/login}"><button type="submit">Log In</button></form>
+            <form sec:authorize="isAuthenticated()" method="post" th:action="@{/logout}"><button type="submit">Log Out</button></form>-->
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/questions}">Questions</a>
+
+            
+        </nav>
+        <main layout:fragment="content">
+        </main>
+        <footer>
+            HE2B-ESI/WEBG6/JLC/Examen d'Aout 2020
+        </footer>
+    </body>
+</html>
